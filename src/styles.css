@@ -69,6 +69,22 @@ body {
   padding: 0;
   text-align: center;
   width: 34px;
+  border-radius: 8px; /* feature 2: added border radius for each square */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* feature 3: added depth to each box */
+  transition: background-color 0.3s ease; /* feature 4: added transition effect to show changes in square */
+}
+
+/* feature 5: added hover effect when hovering over each square */
+.square:hover {
+  background-color: lightgray;
+}
+
+.X-square {
+  color: purple;
+}
+
+.O-square {
+  color: green;
 }
 
 .board-row:after {

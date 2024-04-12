@@ -1,10 +1,19 @@
-import "./styles.css";
 import {useState} from "react";
 
 function Square({value, onSquareClick}) {
+  
+  // feature 1: adding different colors for X and O
+  let squareStyle = "square";
+  if (value === "X") {
+    squareStyle += " , X-square";
+  }
+  else {
+    squareStyle += " , O-square";
+  }
+
   return (
     // onClick is a special built-in React component
-    <button className="square" onClick={onSquareClick}>
+    <button className={squareStyle} onClick={onSquareClick}>
       {value}
     </button>
   );
@@ -68,9 +77,9 @@ function Board({xIsNext, squares, onPlay}) {
 
 // the keywords export default tell index.js that this is the top-level component
 export default function Game() {
-  const xIsNext = currentMove % 2 === 0;
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
   function handlePlay(nextSquares) {
@@ -95,7 +104,7 @@ export default function Game() {
       <li key={move}> 
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
-    )
+    );
   });
   
   return (
@@ -137,3 +146,5 @@ function calculateWinner(squares) {
   The Array(9).fill(null) creates an array containing the values of the board -> when 
   a board is clicked, the array will contain the X or O that was clicked there. 
   This line also stores the history. */
+
+  
